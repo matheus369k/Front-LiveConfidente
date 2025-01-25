@@ -1,116 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Criar Conta - Live Confidente</title>
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <style>
-        .register-options {
-            max-width: 500px;
-            margin: 100px auto;
-            padding: 2rem;
-        }
-
-        .option-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .option-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary-color);
-        }
-
-        .option-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .option-info {
-            flex: 1;
-        }
-
-        .option-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .option-description {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-
-        .arrow-icon {
-            color: var(--text-gray);
-        }
-    </style>
-</head>
-<body>
-    <header class="main-header">
-        <nav class="nav-container">
-            <div class="logo">
-                <a href="index.html"><h1>Live Confidente</h1></a>
-            </div>
-        </nav>
+    <link rel="stylesheet" href="./styles/register.css" />
+  </head>
+  <body>
+    <!-- <header class="main-header">
+      <nav class="nav-container">
+        <a href="index.html" class="logo">Live Confidente</a>
+      </nav>
+    </header> -->
+    <header>
+      <nav>
+        <a href="index.html" class="logo">
+          <button title="Voltar" class="btn-arrow-left" type="button">
+            <img src="./assets/icons/arrow-left.svg" alt="Icone de seta para esquerda" />
+          </button>
+        </a>
+      </nav>
     </header>
 
     <main>
-        <div class="auth-container">
-            <h2 class="auth-title">Crie sua conta</h2>
-            <p class="auth-subtitle">Já tem uma conta? <a href="login.html" style="color: var(--primary-color);">Faça login</a></p>
-
-            <div class="register-options">
-                <a href="register-client.html" class="option-card">
-                    <div class="option-icon">👤</div>
-                    <div class="option-info">
-                        <h3 class="option-title">Cliente</h3>
-                        <p class="option-description">Procuro por acompanhantes</p>
-                    </div>
-                    <div class="arrow-icon">→</div>
-                </a>
-
-                <a href="register-model.html" class="option-card">
-                    <div class="option-icon">👑</div>
-                    <div class="option-info">
-                        <h3 class="option-title">Acompanhante</h3>
-                        <p class="option-description">Quero divulgar meu trabalho</p>
-                    </div>
-                    <div class="arrow-icon">→</div>
-                </a>
-            </div>
-
-            <div style="text-align: center; margin-top: 2rem;">
-                <p style="color: var(--text-gray); margin-bottom: 1rem;">Ou continue com</p>
-                <div class="social-buttons">
-                    <button class="social-button">
-                        <img src="assets/icons/google.svg" alt="Google">
-                        Google
-                    </button>
-                    <button class="social-button">
-                        <img src="assets/icons/facebook.svg" alt="Facebook">
-                        Facebook
-                    </button>
-                </div>
-            </div>
+      <div class="auth-container">
+        <div>
+          <h2 class="auth-title">Crie sua conta</h2>
+          <p class="auth-subtitle">
+            Já tem uma conta?
+            <a href="login.html" style="color: var(--primary-color)"
+              >Faça login</a
+            >
+          </p>
         </div>
+
+        <div class="register-options">
+          <a href="register-client.html" class="option-card">
+            <div class="option-icon">👤</div>
+            <div class="option-info">
+              <h3 class="option-title">Cliente</h3>
+              <p class="option-description">Procuro por acompanhantes</p>
+            </div>
+            <div class="arrow-icon">→</div>
+          </a>
+
+          <a href="register-model.html" class="option-card">
+            <div class="option-icon">👑</div>
+            <div class="option-info">
+              <h3 class="option-title">Acompanhante</h3>
+              <p class="option-description">Quero divulgar meu trabalho</p>
+            </div>
+            <div class="arrow-icon">→</div>
+          </a>
+        </div>
+
+        <div class="social-container">
+          <p>
+            Ou continue com
+          </p>
+          <div class="social-buttons">
+            <button class="social-button">
+              <img src="assets/icons/google.svg" alt="Google" />
+              Google
+            </button>
+            <button class="social-button">
+              <img src="assets/icons/facebook.svg" alt="Facebook" />
+              Facebook
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script src="scripts/auth.js"></script>
-</body>
+  </body>
 </html>

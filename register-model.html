@@ -1,403 +1,478 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro de Modelo - Live Confidente</title>
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <style>
-        .register-container {
-            max-width: 800px;
-            margin: 80px auto;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
+    <link rel="stylesheet" href="./styles/register-model.css" />
+    <style></style>
+  </head>
+  <body>
+    <!--<header class="main-header">
+      <nav class="main-nav container">
+        <a href="index.html" class="logo">Live Confidente</a>
 
-        .register-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .register-header h1 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .register-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .form-section {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .form-section h2 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .form-group label {
-            color: var(--text-gray);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: 0.75rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .checkbox-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            width: 1.2rem;
-            height: 1.2rem;
-        }
-
-        .photo-upload {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            padding: 2rem;
-            border: 2px dashed rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .terms {
-            font-size: 0.875rem;
-            color: var(--text-gray);
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .terms a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .price-input {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .price-input span {
-            color: var(--text-gray);
-        }
-    </style>
-</head>
-<body>
-    <header class="main-header">
-        <nav class="main-nav container">
-            <a href="index.html" class="logo">Live Confidente</a>
-        </nav>
+        <div class="nav-buttons">
+          <div class="auth-buttons" id="authButtons">
+            <a href="login.html"
+              ><button class="btn btn-outline">Entrar</button></a
+            >
+            <div class="dropdown">
+              <a href="register.html"
+                ><button class="btn btn-primary dropdown-toggle">
+                  Cadastrar
+                </button></a
+              >
+              <div class="dropdown-menu">
+                <a href="register-client.html" class="dropdown-item">Cliente</a>
+                <a href="register-model.html" class="dropdown-item">Modelo</a>
+              </div> 
+            </div>
+          </div>
+          <div class="user-menu" id="userMenu" style="display: none">
+            <div class="dropdown">
+              <button class="btn btn-outline dropdown-toggle">
+                <span id="userName">Usuário</span>
+              </button>
+              <div class="dropdown-menu">
+                <a href="profile.html" class="dropdown-item">Meu Perfil</a>
+                <a href="#" class="dropdown-item" id="logoutButton">Sair</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header> -->
+    <header>
+      <nav>
+        <a href="index.html" class="logo">
+          <button title="Voltar" class="btn-arrow-left" type="button">
+            <img
+              src="./assets/icons/arrow-left.svg"
+              alt="Icone de seta para esquerda"
+            />
+          </button>
+        </a>
+      </nav>
     </header>
 
     <main>
-        <div class="register-container">
-            <div class="register-header">
-                <h1>Cadastro de Modelo</h1>
-                <p>Crie sua conta e comece a fazer lives</p>
-            </div>
-
-            <form class="register-form" id="modelForm">
-                <div class="form-section">
-                    <h2>Informações Básicas</h2>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Nome Artístico</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="password">Senha</label>
-                            <input type="password" id="password" name="password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirmPassword">Confirmar Senha</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <h2>Perfil</h2>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="age">Idade</label>
-                            <input type="number" id="age" name="age" min="18" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="location">Estado</label>
-                            <select id="location" name="location" required>
-                                <option value="">Selecione...</option>
-                                <option value="AC">Acre</option>
-                                <option value="AL">Alagoas</option>
-                                <option value="AP">Amapá</option>
-                                <option value="AM">Amazonas</option>
-                                <option value="BA">Bahia</option>
-                                <option value="CE">Ceará</option>
-                                <option value="DF">Distrito Federal</option>
-                                <option value="ES">Espírito Santo</option>
-                                <option value="GO">Goiás</option>
-                                <option value="MA">Maranhão</option>
-                                <option value="MT">Mato Grosso</option>
-                                <option value="MS">Mato Grosso do Sul</option>
-                                <option value="MG">Minas Gerais</option>
-                                <option value="PA">Pará</option>
-                                <option value="PB">Paraíba</option>
-                                <option value="PR">Paraná</option>
-                                <option value="PE">Pernambuco</option>
-                                <option value="PI">Piauí</option>
-                                <option value="RJ">Rio de Janeiro</option>
-                                <option value="RN">Rio Grande do Norte</option>
-                                <option value="RS">Rio Grande do Sul</option>
-                                <option value="RO">Rondônia</option>
-                                <option value="RR">Roraima</option>
-                                <option value="SC">Santa Catarina</option>
-                                <option value="SP">São Paulo</option>
-                                <option value="SE">Sergipe</option>
-                                <option value="TO">Tocantins</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="bio">Biografia</label>
-                        <textarea id="bio" name="bio" required></textarea>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <h2>Serviços</h2>
-                    <div class="checkbox-grid">
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="service1" name="services" value="Live Privada">
-                            <label for="service1">Live Privada</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="service2" name="services" value="Chat Exclusivo">
-                            <label for="service2">Chat Exclusivo</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="service3" name="services" value="Vídeo Chamada">
-                            <label for="service3">Vídeo Chamada</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="service4" name="services" value="Fotos Personalizadas">
-                            <label for="service4">Fotos Personalizadas</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="service5" name="services" value="Shows Temáticos">
-                            <label for="service5">Shows Temáticos</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="service6" name="services" value="Áudio Mensagens">
-                            <label for="service6">Áudio Mensagens</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <h2>Especialidades</h2>
-                    <div class="checkbox-grid">
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="tag1" name="tags" value="Dança">
-                            <label for="tag1">Dança</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="tag2" name="tags" value="Cosplay">
-                            <label for="tag2">Cosplay</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="tag3" name="tags" value="ASMR">
-                            <label for="tag3">ASMR</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="tag4" name="tags" value="Fetiche">
-                            <label for="tag4">Fetiche</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="tag5" name="tags" value="Shows Temáticos">
-                            <label for="tag5">Shows Temáticos</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <h2>Preços</h2>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="price10">10 minutos</label>
-                            <div class="price-input">
-                                <span>R$</span>
-                                <input type="number" id="price10" name="price10" min="0" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="price30">30 minutos</label>
-                            <div class="price-input">
-                                <span>R$</span>
-                                <input type="number" id="price30" name="price30" min="0" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="price60">1 hora</label>
-                            <div class="price-input">
-                                <span>R$</span>
-                                <input type="number" id="price60" name="price60" min="0" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="priceVIP">Mensalidade VIP</label>
-                            <div class="price-input">
-                                <span>R$</span>
-                                <input type="number" id="priceVIP" name="priceVIP" min="0" required>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <h2>Fotos</h2>
-                    <label class="photo-upload" for="photos">
-                        <span>Clique ou arraste suas fotos aqui</span>
-                        <span style="color: var(--text-gray);">Máximo 5 fotos</span>
-                        <input type="file" id="photos" name="photos" multiple accept="image/*" style="display: none;">
-                    </label>
-                    <div id="photoPreview" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;"></div>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Criar Conta</button>
-
-                <p class="terms">
-                    Ao criar uma conta, você concorda com nossos 
-                    <a href="#">Termos de Uso</a> e 
-                    <a href="#">Política de Privacidade</a>
-                </p>
-            </form>
+      <div class="register-container">
+        <div class="register-header">
+          <h1>Cadastro de Modelo</h1>
+          <p>Crie sua conta e comece a fazer lives</p>
         </div>
+
+        <form class="register-form" id="modelForm">
+          <div class="form-section">
+            <h2>Informações Básicas</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Nome Artístico </label>
+                <div class="field-group">
+                  <img src="./assets/icons/person.svg" alt="person icon" />
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Digite seu nome"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <div class="field-group">
+                  <img src="./assets/icons/email.svg" alt="email icon" />
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="Digite seu e-mail"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="password">Senha</label>
+                <div class="field-group">
+                  <img src="./assets/icons/padlock.svg" alt="padlock icon" />
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    placeholder="Digite sua senha"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="confirmPassword">Confirmar Senha</label>
+                <div class="field-group">
+                  <img src="./assets/icons/padlock.svg" alt="padlock icon" />
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    required
+                    placeholder="Digite sua senha novamente"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Perfil</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="age">Idade</label>
+                <div class="field-group">
+                  <img src="./assets/icons/person.svg" alt="person icon" />
+                  <input
+                    type="number"
+                    id="age"
+                    name="age"
+                    min="18"
+                    required
+                    placeholder="Digite sua idade"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="location">Estado</label>
+                <div class="field-group">
+                  <img
+                    src="./assets/icons/location-pin.svg"
+                    alt="location icon"
+                  />
+                  <select
+                    class="form-location"
+                    id="location"
+                    name="location"
+                    required
+                  >
+                    <option value="">Selecione...</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bio">Biografia</label>
+              <div class="field-group">
+                <textarea
+                  id="bio"
+                  name="bio"
+                  required
+                  placeholder="Digite sua biografia"
+                ></textarea>
+                <img
+                  src="./assets/icons/message-circle.svg"
+                  alt="person icon"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Serviços</h2>
+            <div class="checkbox-grid">
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="service1"
+                  name="services"
+                  value="Live Privada"
+                />
+                <label for="service1">Live Privada</label>
+              </div>
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="service2"
+                  name="services"
+                  value="Chat Exclusivo"
+                />
+                <label for="service2">Chat Exclusivo</label>
+              </div>
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="service3"
+                  name="services"
+                  value="Vídeo Chamada"
+                />
+                <label for="service3">Vídeo Chamada</label>
+              </div>
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="service4"
+                  name="services"
+                  value="Fotos Personalizadas"
+                />
+                <label for="service4">Fotos Personalizadas</label>
+              </div>
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="service5"
+                  name="services"
+                  value="Shows Temáticos"
+                />
+                <label for="service5">Shows Temáticos</label>
+              </div>
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="service6"
+                  name="services"
+                  value="Áudio Mensagens"
+                />
+                <label for="service6">Áudio Mensagens</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Especialidades</h2>
+            <div class="checkbox-grid">
+              <div class="checkbox-item">
+                <input type="checkbox" id="tag1" name="tags" value="Dança" />
+                <label for="tag1">Dança</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="tag2" name="tags" value="Cosplay" />
+                <label for="tag2">Cosplay</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="tag3" name="tags" value="ASMR" />
+                <label for="tag3">ASMR</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="tag4" name="tags" value="Fetiche" />
+                <label for="tag4">Fetiche</label>
+              </div>
+              <div class="checkbox-item">
+                <input
+                  type="checkbox"
+                  id="tag5"
+                  name="tags"
+                  value="Shows Temáticos"
+                />
+                <label for="tag5">Shows Temáticos</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Preços</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="price10">10 minutos</label>
+                <div class="price-group">
+                  <span>R$</span>
+                  <input
+                    type="number"
+                    id="price10"
+                    name="price10"
+                    min="0"
+                    required
+                    placeholder="Digite o valor"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="price30">30 minutos</label>
+                <div class="price-group">
+                  <span>R$</span>
+                  <input
+                    type="number"
+                    id="price30"
+                    name="price30"
+                    min="0"
+                    required
+                    placeholder="Digite o valor"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="price60">1 hora</label>
+                <div class="price-group">
+                  <span>R$</span>
+                  <input
+                    type="number"
+                    id="price60"
+                    name="price60"
+                    min="0"
+                    required
+                    placeholder="Digite o valor"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="priceVIP">Mensalidade VIP</label>
+                <div class="price-group">
+                  <span>R$</span>
+                  <input
+                    type="number"
+                    id="priceVIP"
+                    name="priceVIP"
+                    min="0"
+                    required placeholder="Digite o valor" 
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2>Fotos</h2>
+            <label class="photo-upload" for="photos">
+              <span>Clique ou arraste suas fotos aqui</span>
+              <span style="color: var(--text-gray)">Máximo 5 fotos</span>
+              <input
+                type="file"
+                id="photos"
+                name="photos"
+                multiple
+                accept="image/*"
+                style="display: none"
+              />
+            </label>
+            <div
+              id="photoPreview"
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+                margin-top: 1rem;
+              "
+            ></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Criar Conta</button>
+
+          <p class="terms">
+            Ao criar uma conta, você concorda com nossos
+            <a href="#">Termos de Uso</a> e
+            <a href="#">Política de Privacidade</a>
+          </p>
+        </form>
+      </div>
     </main>
 
     <script src="scripts/auth.js"></script>
     <script>
-        // Preview de fotos
-        document.getElementById('photos').addEventListener('change', function(e) {
-            const preview = document.getElementById('photoPreview');
-            preview.innerHTML = '';
-            const files = Array.from(e.target.files).slice(0, 5);
+      // Preview de fotos
+      document
+        .getElementById("photos")
+        .addEventListener("change", function (e) {
+          const preview = document.getElementById("photoPreview");
+          preview.innerHTML = "";
+          const files = Array.from(e.target.files).slice(0, 5);
 
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const div = document.createElement('div');
-                    div.style.aspectRatio = '3/4';
-                    div.style.borderRadius = '8px';
-                    div.style.overflow = 'hidden';
-                    
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.style.width = '100%';
-                    img.style.height = '100%';
-                    img.style.objectFit = 'cover';
-                    
-                    div.appendChild(img);
-                    preview.appendChild(div);
-                }
-                reader.readAsDataURL(file);
-            });
+          files.forEach((file) => {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const div = document.createElement("div");
+              div.style.aspectRatio = "3/4";
+              div.style.borderRadius = "8px";
+              div.style.overflow = "hidden";
+
+              const img = document.createElement("img");
+              img.src = e.target.result;
+              img.style.width = "100%";
+              img.style.height = "100%";
+              img.style.objectFit = "cover";
+
+              div.appendChild(img);
+              preview.appendChild(div);
+            };
+            reader.readAsDataURL(file);
+          });
         });
 
-        // Envio do formulário
-        document.getElementById('modelForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
+      // Envio do formulário
+      document
+        .getElementById("modelForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
 
-            if (password !== confirmPassword) {
-                alert('As senhas não coincidem');
-                return;
-            }
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
 
-            // Coleta os serviços selecionados
-            const services = Array.from(document.querySelectorAll('input[name="services"]:checked'))
-                .map(cb => cb.value);
+          if (password !== confirmPassword) {
+            alert("As senhas não coincidem");
+            return;
+          }
 
-            // Coleta as tags selecionadas
-            const tags = Array.from(document.querySelectorAll('input[name="tags"]:checked'))
-                .map(cb => cb.value);
+          // Coleta os serviços selecionados
+          const services = Array.from(
+            document.querySelectorAll('input[name="services"]:checked')
+          ).map((cb) => cb.value);
 
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                password: password,
-                age: document.getElementById('age').value,
-                location: document.getElementById('location').value,
-                bio: document.getElementById('bio').value,
-                services: services,
-                tags: tags,
-                pricing: {
-                    '10min': document.getElementById('price10').value,
-                    '30min': document.getElementById('price30').value,
-                    '1hour': document.getElementById('price60').value,
-                    'vip': document.getElementById('priceVIP').value
-                },
-                type: 'model'
-            };
+          // Coleta as tags selecionadas
+          const tags = Array.from(
+            document.querySelectorAll('input[name="tags"]:checked')
+          ).map((cb) => cb.value);
 
-            try {
-                await auth.register(formData, 'model');
-                window.location.href = 'profile.html';
-            } catch (error) {
-                alert(error.message);
-            }
+          const formData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            password: password,
+            age: document.getElementById("age").value,
+            location: document.getElementById("location").value,
+            bio: document.getElementById("bio").value,
+            services: services,
+            tags: tags,
+            pricing: {
+              "10min": document.getElementById("price10").value,
+              "30min": document.getElementById("price30").value,
+              "1hour": document.getElementById("price60").value,
+              vip: document.getElementById("priceVIP").value,
+            },
+            type: "model",
+          };
+
+          try {
+            await auth.register(formData, "model");
+            window.location.href = "profile.html";
+          } catch (error) {
+            alert(error.message);
+          }
         });
     </script>
-</body>
+  </body>
 </html>

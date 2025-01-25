@@ -1,528 +1,276 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perfil - Live Confidente</title>
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .profile-container {
-            max-width: 1200px;
-            margin: 80px auto 0;
-            padding: 2rem;
-        }
-
-        .profile-header {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .profile-photo {
-            width: 100%;
-            height: 400px;
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .profile-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .online-status {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            font-size: 0.875rem;
-        }
-
-        .online-status.online {
-            background: var(--success-color);
-        }
-
-        .profile-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .profile-title {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .profile-title h1 {
-            font-size: 2rem;
-            font-weight: 600;
-        }
-
-        .verified-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1rem;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 2rem;
-            font-size: 0.875rem;
-        }
-
-        .profile-meta {
-            display: flex;
-            gap: 1rem;
-            color: var(--text-gray);
-        }
-
-        .profile-rating {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .stars {
-            color: gold;
-        }
-
-        .profile-actions {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .profile-tabs {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .tab-button {
-            padding: 1rem 2rem;
-            color: var(--text-gray);
-            border: none;
-            background: none;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-        }
-
-        .tab-button.active {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
-        }
-
-        .tab-pane {
-            display: none;
-        }
-
-        .tab-pane.active {
-            display: block;
-        }
-
-        .info-section {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-        }
-
-        .info-section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .service-item {
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .pricing-table {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .photo-item {
-            aspect-ratio: 3/4;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .photo-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .reviews-list {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .review-item {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
-        }
-
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .calendar-view {
-            display: grid;
-            gap: 1rem;
-        }
-
-        .calendar-day {
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-gray);
-        }
-
-        .next-show {
-            background: var(--success-color);
-            color: white;
-        }
-
-        .next-show-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .show-time {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .date {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .time {
-            color: var(--text-gray);
-        }
-
-        .tags-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .tag {
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2rem;
-            color: var(--text-gray);
-        }
-
-        @media (max-width: 768px) {
-            .profile-header {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-photo {
-                height: 300px;
-            }
-
-            .profile-actions {
-                flex-direction: column;
-            }
-        }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="./styles/profile.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <header class="main-header">
-        <nav class="nav-container">
-            <div class="logo">
-                <a href="index.html"><h1>Live Confidente</h1></a>
-            </div>
-            <div class="nav-links">
-                <!-- Será preenchido pelo auth.js -->
-            </div>
-        </nav>
+      <nav class="main-nav container">
+        <a href="index.html" class="logo">Live Confidente</a>
+
+        <div class="nav-links">
+          <!-- Será preenchido pelo auth.js -->
+        </div>
+      </nav>
     </header>
 
     <main>
-        <div class="profile-container">
-            <div class="profile-header">
-                <div class="profile-cover">
-                    <div class="profile-photo">
-                        <img src="" alt="" id="profilePhoto">
-                        <span class="online-status"></span>
-                    </div>
-                </div>
-                <div class="profile-info">
-                    <div class="profile-title">
-                        <h1 id="profileName"></h1>
-                        <span class="verified-badge" id="verifiedBadge" style="display: none;">✓ Verificada</span>
-                    </div>
-                    <div class="profile-meta">
-                        <span id="profileAge"></span>
-                        <span id="profileLocation"></span>
-                        <span id="profileCategory"></span>
-                    </div>
-                    <div class="profile-rating">
-                        <span class="stars">★★★★★</span>
-                        <span class="rating-value" id="profileRating"></span>
-                        <span class="rating-count" id="profileReviewCount"></span>
-                    </div>
-                </div>
+      <div class="profile-container">
+        <div class="profile-header">
+          <div class="profile-cover">
+            <div class="profile-photo">
+              <img src="" alt="" id="profilePhoto" />
+              <span class="online-status"></span>
             </div>
-
-            <div class="profile-actions">
-                <button class="btn btn-primary" id="liveButton">
-                    <span>Entrar na Live</span>
-                </button>
-                <button class="btn btn-outline" id="privateButton">
-                    <span>Show Privado</span>
-                </button>
-                <button class="btn btn-outline" id="followButton">
-                    <span>Seguir</span>
-                </button>
-                <button class="btn btn-outline" id="tipButton">
-                    <span>Enviar Presente</span>
-                </button>
-                <button class="btn btn-chat" id="btnChat">
-                    <i class="fas fa-comments"></i>
-                    Chat Exclusivo
-                </button>
+          </div>
+          <div class="profile-info">
+            <div class="profile-title">
+              <h1 id="profileName"></h1>
+              <span
+                class="verified-badge"
+                id="verifiedBadge"
+                style="display: none"
+                >✓ Verificada</span
+              >
             </div>
-
-            <div class="profile-tabs">
-                <button class="tab-button active" data-tab="about">Sobre</button>
-                <button class="tab-button" data-tab="photos">Fotos</button>
-                <button class="tab-button" data-tab="reviews">Avaliações</button>
-                <button class="tab-button" data-tab="availability">Disponibilidade</button>
+            <div class="profile-meta">
+              <span id="profileAge"></span>
+              <span id="profileLocation"></span>
+              <span id="profileCategory"></span>
             </div>
-
-            <div class="tab-content">
-                <!-- Aba Sobre -->
-                <div class="tab-pane active" id="about">
-                    <div class="info-section">
-                        <h2>Sobre mim</h2>
-                        <p id="profileBio"></p>
-                    </div>
-
-                    <div class="info-section">
-                        <h2>Serviços</h2>
-                        <div class="services-grid" id="profileServices">
-                            <!-- Preenchido via JavaScript -->
-                        </div>
-                    </div>
-
-                    <div class="info-section">
-                        <h2>Valores</h2>
-                        <div class="pricing-table" id="profilePricing">
-                            <!-- Preenchido via JavaScript -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Aba Fotos -->
-                <div class="tab-pane" id="photos">
-                    <div class="photo-grid" id="profilePhotos">
-                        <!-- Preenchido via JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Aba Avaliações -->
-                <div class="tab-pane" id="reviews">
-                    <div class="reviews-list" id="profileReviews">
-                        <!-- Preenchido via JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Aba Disponibilidade -->
-                <div class="tab-pane" id="availability">
-                    <div class="calendar-view" id="profileCalendar">
-                        <!-- Preenchido via JavaScript -->
-                    </div>
-                </div>
+            <div class="profile-rating">
+              <span class="rating-stars"
+                >&#9733;&#9733;&#9733;&#9733;&#9733;</span
+              >
+              <span class="rating-value" id="profileRating"></span>
+              <span class="rating-count" id="profileReviewCount"></span>
             </div>
+          </div>
         </div>
+
+        <div class="profile-actions">
+          <button class="btn btn-primary" id="liveButton">
+            <span>Entrar na Live</span>
+          </button>
+          <button class="btn btn-outline" id="privateButton">
+            <span>Show Privado</span>
+          </button>
+          <button class="btn btn-outline" id="followButton">
+            <span>Seguir</span>
+          </button>
+          <button class="btn btn-outline" id="tipButton">
+            <span>Enviar Presente</span>
+          </button>
+          <button class="btn btn-chat" id="btnChat">
+            <i class="fas fa-comments"></i>
+            Chat Exclusivo
+          </button>
+        </div>
+
+        <div class="profile-tabs">
+          <button class="tab-button active" data-tab="about">Sobre</button>
+          <button class="tab-button" data-tab="photos">Fotos</button>
+          <button class="tab-button" data-tab="reviews">Avaliações</button>
+          <button class="tab-button" data-tab="availability">
+            Disponibilidade
+          </button>
+        </div>
+
+        <div class="tab-content">
+          <!-- Aba Sobre -->
+          <div class="tab-pane active" id="about">
+            <div class="info-section">
+              <h2>Sobre mim</h2>
+              <p id="profileBio"></p>
+            </div>
+
+            <div class="info-section">
+              <h2>Serviços</h2>
+              <div class="services-grid" id="profileServices">
+                <!-- Preenchido via JavaScript -->
+              </div>
+            </div>
+
+            <div class="info-section">
+              <h2>Valores</h2>
+              <div class="pricing-table" id="profilePricing">
+                <!-- Preenchido via JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Aba Fotos -->
+          <div class="tab-pane" id="photos">
+            <div class="photo-grid" id="profilePhotos">
+              <!-- Preenchido via JavaScript -->
+            </div>
+          </div>
+
+          <!-- Aba Avaliações -->
+          <div class="tab-pane" id="reviews">
+            <div class="reviews-list" id="profileReviews">
+              <!-- Preenchido via JavaScript -->
+            </div>
+          </div>
+
+          <!-- Aba Disponibilidade -->
+          <div class="tab-pane" id="availability">
+            <div class="calendar-view" id="profileCalendar">
+              <!-- Preenchido via JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- Chat Container -->
     <div class="chat-container" id="chatContainer">
-        <div class="chat-header">
-            <div class="chat-header-info">
-                <img src="" alt="Foto de perfil" class="chat-avatar" id="profilePhotoChat">
-                <div class="chat-user-info">
-                    <h4 id="profileNameChat"></h4>
-                    <p>Online agora</p>
-                </div>
-            </div>
-            <button class="chat-close" id="chatClose">
-                <i class="fas fa-times"></i>
-            </button>
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <img
+            src=""
+            alt="Foto de perfil"
+            class="chat-avatar"
+            id="profilePhotoChat"
+          />
+          <div class="chat-user-info">
+            <h4 id="profileNameChat"></h4>
+            <p>Online agora</p>
+          </div>
         </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="message message-received">
-                Olá! Como posso ajudar você hoje?
-            </div>
+        <button class="chat-close" id="chatClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message message-received">
+          Olá! Como posso ajudar você hoje?
         </div>
-        <div class="chat-input">
-            <input type="text" placeholder="Digite sua mensagem..." id="messageInput">
-            <button class="chat-send" id="sendMessage">
-                <i class="fas fa-paper-plane"></i>
-            </button>
-        </div>
+      </div>
+      <div class="chat-input">
+        <input
+          type="text"
+          placeholder="Digite sua mensagem..."
+          id="messageInput"
+        />
+        <button class="chat-send" id="sendMessage">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
     </div>
 
     <script src="scripts/auth.js"></script>
     <script>
-        // Dados mockados do perfil
-        const mockProfile = {
+      // Dados mockados do perfil
+      const mockProfile = {
+        id: 1,
+        name: "Ana Silva",
+        age: 23,
+        location: "São Paulo - SP",
+        category: "Premium",
+        photo:
+          "https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        photos: [
+          "https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        ],
+        rating: 4.8,
+        reviewCount: 124,
+        verified: true,
+        online: true,
+        bio: "Olá! Sou a Ana, modelo premium na Live Confidente. Faço shows exclusivos e personalizados, sempre com muito carinho e atenção aos meus admiradores. Adoro interagir e criar momentos especiais com quem me assiste.",
+        services: [
+          "Live Privada",
+          "Chat Exclusivo",
+          "Vídeo Chamada",
+          "Fotos Personalizadas",
+          "Shows Temáticos",
+          "Áudio Mensagens",
+        ],
+        pricing: [
+          { duration: "10 minutos", price: 50 },
+          { duration: "30 minutos", price: 120 },
+          { duration: "1 hora", price: 200 },
+          { duration: "Mensalidade VIP", price: 500 },
+        ],
+        reviews: [
+          {
             id: 1,
-            name: 'Ana Silva',
-            age: 23,
-            location: 'São Paulo - SP',
-            category: 'Premium',
-            photo: 'assets/images/model1.jpg',
-            photos: [
-                'assets/images/model1.jpg',
-                'assets/images/model1-2.jpg',
-                'assets/images/model1-3.jpg'
-            ],
-            rating: 4.8,
-            reviewCount: 124,
-            verified: true,
-            online: true,
-            bio: 'Olá! Sou a Ana, modelo premium na Live Confidente. Faço shows exclusivos e personalizados, sempre com muito carinho e atenção aos meus admiradores. Adoro interagir e criar momentos especiais com quem me assiste.',
-            services: [
-                'Live Privada',
-                'Chat Exclusivo',
-                'Vídeo Chamada',
-                'Fotos Personalizadas',
-                'Shows Temáticos',
-                'Áudio Mensagens'
-            ],
-            pricing: [
-                { duration: '10 minutos', price: 50 },
-                { duration: '30 minutos', price: 120 },
-                { duration: '1 hora', price: 200 },
-                { duration: 'Mensalidade VIP', price: 500 }
-            ],
-            reviews: [
-                {
-                    id: 1,
-                    user: 'João M.',
-                    rating: 5,
-                    date: '2023-10-15',
-                    comment: 'Show incrível! A Ana é super carismática e faz um show maravilhoso.'
-                },
-                {
-                    id: 2,
-                    user: 'Pedro S.',
-                    rating: 4,
-                    date: '2023-10-10',
-                    comment: 'Ótima live privada, super atenciosa e profissional!'
-                }
-            ],
-            availability: {
-                monday: { start: '14:00', end: '02:00' },
-                tuesday: { start: '14:00', end: '02:00' },
-                wednesday: { start: '14:00', end: '02:00' },
-                thursday: { start: '14:00', end: '02:00' },
-                friday: { start: '14:00', end: '04:00' },
-                saturday: { start: '16:00', end: '04:00' },
-                sunday: { start: '16:00', end: '02:00' }
-            },
-            stats: {
-                followers: 15000,
-                totalShows: 450,
-                showsThisWeek: 12,
-                averageRating: 4.8
-            },
-            nextShow: '2025-01-23T22:00:00',
-            tags: ['Dança', 'Cosplay', 'ASMR', 'Fetiche', 'Shows Temáticos']
-        };
+            user: "João M.",
+            rating: 5,
+            date: "2023-10-15",
+            comment:
+              "Show incrível! A Ana é super carismática e faz um show maravilhoso.",
+          },
+          {
+            id: 2,
+            user: "Pedro S.",
+            rating: 4,
+            date: "2023-10-10",
+            comment: "Ótima live privada, super atenciosa e profissional!",
+          },
+        ],
+        availability: {
+          monday: { start: "14:00", end: "02:00" },
+          tuesday: { start: "14:00", end: "02:00" },
+          wednesday: { start: "14:00", end: "02:00" },
+          thursday: { start: "14:00", end: "02:00" },
+          friday: { start: "14:00", end: "04:00" },
+          saturday: { start: "16:00", end: "04:00" },
+          sunday: { start: "16:00", end: "02:00" },
+        },
+        stats: {
+          followers: 15000,
+          totalShows: 450,
+          showsThisWeek: 12,
+          averageRating: 4.8,
+        },
+        nextShow: "2025-01-23T22:00:00",
+        tags: ["Dança", "Cosplay", "ASMR", "Fetiche", "Shows Temáticos"],
+      };
 
-        // Função para carregar os dados do perfil
-        function loadProfile(profile) {
-            // Informações básicas
-            document.getElementById('profilePhoto').src = profile.photo;
-            document.getElementById('profilePhoto').alt = profile.name;
-            document.getElementById('profileName').textContent = profile.name;
-            document.getElementById('profileAge').textContent = `${profile.age} anos`;
-            document.getElementById('profileLocation').textContent = profile.location;
-            document.getElementById('profileCategory').textContent = profile.category;
-            document.getElementById('profileRating').textContent = profile.rating;
-            document.getElementById('profileReviewCount').textContent = `(${profile.reviewCount} avaliações)`;
-            document.getElementById('verifiedBadge').style.display = profile.verified ? 'inline-flex' : 'none';
-            document.getElementById('profileBio').textContent = profile.bio;
+      // Função para carregar os dados do perfil
+      function loadProfile(profile) {
+        // Informações básicas
+        document.getElementById("profilePhoto").src = profile.photo;
+        document.getElementById("profilePhoto").alt = profile.name;
+        document.getElementById("profileName").textContent = profile.name;
+        document.getElementById(
+          "profileAge"
+        ).textContent = `${profile.age} anos`;
+        document.getElementById("profileLocation").textContent =
+          profile.location;
+        document.getElementById("profileCategory").textContent =
+          profile.category;
+        document.getElementById("profileRating").textContent = profile.rating;
+        document.getElementById(
+          "profileReviewCount"
+        ).textContent = `(${profile.reviewCount} avaliações)`;
+        document.getElementById("verifiedBadge").style.display =
+          profile.verified ? "inline-flex" : "none";
+        document.getElementById("profileBio").textContent = profile.bio;
 
-            // Status online
-            const onlineStatus = document.querySelector('.online-status');
-            onlineStatus.classList.toggle('online', profile.online);
-            onlineStatus.textContent = profile.online ? 'Online' : 'Offline';
+        // Status online
+        const onlineStatus = document.querySelector(".online-status");
+        onlineStatus.classList.toggle("online", profile.online);
+        onlineStatus.textContent = profile.online ? "Online" : "Offline";
 
-            // Estatísticas
-            const statsSection = document.createElement('div');
-            statsSection.className = 'info-section';
-            statsSection.innerHTML = `
+        // Estatísticas
+        const statsSection = document.createElement("div");
+        statsSection.className = "info-section";
+        statsSection.innerHTML = `
                 <h2>Estatísticas</h2>
                 <div class="stats-grid">
                     <div class="stat-item">
@@ -530,190 +278,248 @@
                         <span class="stat-label">Seguidores</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-value">${profile.stats.totalShows}</span>
+                        <span class="stat-value">${
+                          profile.stats.totalShows
+                        }</span>
                         <span class="stat-label">Shows realizados</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-value">${profile.stats.showsThisWeek}</span>
+                        <span class="stat-value">${
+                          profile.stats.showsThisWeek
+                        }</span>
                         <span class="stat-label">Shows esta semana</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-value">★ ${profile.stats.averageRating}</span>
+                        <span class="stat-value">★ ${
+                          profile.stats.averageRating
+                        }</span>
                         <span class="stat-label">Avaliação média</span>
                     </div>
                 </div>
             `;
-            document.querySelector('#about').insertBefore(statsSection, document.querySelector('#about .info-section'));
+        document
+          .querySelector("#about")
+          .insertBefore(
+            statsSection,
+            document.querySelector("#about .info-section")
+          );
 
-            // Próximo show
-            const nextShowDate = new Date(profile.nextShow);
-            const nextShowSection = document.createElement('div');
-            nextShowSection.className = 'info-section next-show';
-            nextShowSection.innerHTML = `
+        // Próximo show
+        const nextShowDate = new Date(profile.nextShow);
+        const nextShowSection = document.createElement("div");
+        nextShowSection.className = "info-section next-show";
+        nextShowSection.innerHTML = `
                 <h2>Próximo Show</h2>
                 <div class="next-show-info">
                     <div class="show-time">
                         <span class="date">${nextShowDate.toLocaleDateString()}</span>
-                        <span class="time">${nextShowDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                        <span class="time">${nextShowDate.toLocaleTimeString(
+                          [],
+                          { hour: "2-digit", minute: "2-digit" }
+                        )}</span>
                     </div>
                     <button class="btn btn-primary">Agendar Lembrete</button>
                 </div>
             `;
-            document.querySelector('#about').insertBefore(nextShowSection, document.querySelector('#about .info-section'));
+        document
+          .querySelector("#about")
+          .insertBefore(
+            nextShowSection,
+            document.querySelector("#about .info-section")
+          );
 
-            // Tags
-            const tagsSection = document.createElement('div');
-            tagsSection.className = 'info-section';
-            tagsSection.innerHTML = `
+        // Tags
+        const tagsSection = document.createElement("div");
+        tagsSection.className = "info-section";
+        tagsSection.innerHTML = `
                 <h2>Especialidades</h2>
                 <div class="tags-grid">
-                    ${profile.tags.map(tag => `
+                    ${profile.tags
+                      .map(
+                        (tag) => `
                         <span class="tag">${tag}</span>
-                    `).join('')}
+                    `
+                      )
+                      .join("")}
                 </div>
             `;
-            document.querySelector('#about').appendChild(tagsSection);
+        document.querySelector("#about").appendChild(tagsSection);
 
-            // Serviços
-            const servicesGrid = document.getElementById('profileServices');
-            servicesGrid.innerHTML = profile.services.map(service => `
+        // Serviços
+        const servicesGrid = document.getElementById("profileServices");
+        servicesGrid.innerHTML = profile.services
+          .map(
+            (service) => `
                 <div class="service-item">
                     <span class="service-name">${service}</span>
                 </div>
-            `).join('');
+            `
+          )
+          .join("");
 
-            // Preços
-            const pricingTable = document.getElementById('profilePricing');
-            pricingTable.innerHTML = profile.pricing.map(item => `
+        // Preços
+        const pricingTable = document.getElementById("profilePricing");
+        pricingTable.innerHTML = profile.pricing
+          .map(
+            (item) => `
                 <div class="price-item">
                     <span class="duration">${item.duration}</span>
                     <span class="price">R$ ${item.price}</span>
                 </div>
-            `).join('');
+            `
+          )
+          .join("");
 
-            // Fotos
-            const photoGrid = document.getElementById('profilePhotos');
-            photoGrid.innerHTML = profile.photos.map(photo => `
+        // Fotos
+        const photoGrid = document.getElementById("profilePhotos");
+        photoGrid.innerHTML = profile.photos
+          .map(
+            (photo) => `
                 <div class="photo-item">
                     <img src="${photo}" alt="${profile.name}">
                 </div>
-            `).join('');
+            `
+          )
+          .join("");
 
-            // Avaliações
-            const reviewsList = document.getElementById('profileReviews');
-            reviewsList.innerHTML = profile.reviews.map(review => `
+        // Avaliações
+        const reviewsList = document.getElementById("profileReviews");
+        reviewsList.innerHTML = profile.reviews
+          .map(
+            (review) => `
                 <div class="review-item">
                     <div class="review-header">
                         <span class="review-user">${review.user}</span>
                         <div class="review-rating">
-                            <span class="stars">${'★'.repeat(review.rating)}${'☆'.repeat(5-review.rating)}</span>
+                            <span class="stars">${"&#9733;".repeat(
+                              review.rating
+                            )}${"&#9734;".repeat(5 - review.rating)}</span>
                         </div>
-                        <span class="review-date">${new Date(review.date).toLocaleDateString()}</span>
+                        <span class="review-date">${new Date(
+                          review.date
+                        ).toLocaleDateString()}</span>
                     </div>
                     <p class="review-comment">${review.comment}</p>
                 </div>
-            `).join('');
+            `
+          )
+          .join("");
 
-            // Disponibilidade
-            const calendarView = document.getElementById('profileCalendar');
-            calendarView.innerHTML = Object.entries(profile.availability).map(([day, hours]) => `
+        // Disponibilidade
+        const calendarView = document.getElementById("profileCalendar");
+        calendarView.innerHTML = Object.entries(profile.availability)
+          .map(
+            ([day, hours]) => `
                 <div class="calendar-day">
-                    <span class="day-name">${day.charAt(0).toUpperCase() + day.slice(1)}</span>
+                    <span class="day-name">${
+                      day.charAt(0).toUpperCase() + day.slice(1)
+                    }</span>
                     <span class="day-hours">${hours.start} - ${hours.end}</span>
                 </div>
-            `).join('');
+            `
+          )
+          .join("");
 
-            // Chat
-            document.getElementById('profilePhotoChat').src = profile.photo;
-            document.getElementById('profileNameChat').textContent = profile.name;
+        // Chat
+        document.getElementById("profilePhotoChat").src = profile.photo;
+        document.getElementById("profileNameChat").textContent = profile.name;
+      }
+
+      // Gerenciamento das tabs
+      document.querySelectorAll(".tab-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active de todos os botões e painéis
+          document
+            .querySelectorAll(".tab-button")
+            .forEach((b) => b.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-pane")
+            .forEach((p) => p.classList.remove("active"));
+
+          // Adiciona active ao botão clicado e painel correspondente
+          button.classList.add("active");
+          document.getElementById(button.dataset.tab).classList.add("active");
+        });
+      });
+
+      // Event listeners para botões de ação
+      document.getElementById("liveButton").addEventListener("click", () => {
+        if (!auth.currentUser) {
+          window.location.href = "login.html";
+          return;
         }
+        alert("Entrando na live...");
+      });
 
-        // Gerenciamento das tabs
-        document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active de todos os botões e painéis
-                document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-                
-                // Adiciona active ao botão clicado e painel correspondente
-                button.classList.add('active');
-                document.getElementById(button.dataset.tab).classList.add('active');
-            });
-        });
-
-        // Event listeners para botões de ação
-        document.getElementById('liveButton').addEventListener('click', () => {
-            if (!auth.currentUser) {
-                window.location.href = 'login.html';
-                return;
-            }
-            alert('Entrando na live...');
-        });
-
-        document.getElementById('privateButton').addEventListener('click', () => {
-            if (!auth.currentUser) {
-                window.location.href = 'login.html';
-                return;
-            }
-            alert('Iniciando show privado...');
-        });
-
-        document.getElementById('followButton').addEventListener('click', () => {
-            if (!auth.currentUser) {
-                window.location.href = 'login.html';
-                return;
-            }
-            alert('Seguindo modelo...');
-        });
-
-        document.getElementById('tipButton').addEventListener('click', () => {
-            if (!auth.currentUser) {
-                window.location.href = 'login.html';
-                return;
-            }
-            alert('Enviando presente...');
-        });
-
-        document.getElementById('btnChat').addEventListener('click', () => {
-            document.getElementById('chatContainer').classList.add('active');
-        });
-
-        document.getElementById('chatClose').addEventListener('click', () => {
-            document.getElementById('chatContainer').classList.remove('active');
-        });
-
-        function addMessage(message, isSent = true) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message message-${isSent ? 'sent' : 'received'}`;
-            messageDiv.textContent = message;
-            document.getElementById('chatMessages').appendChild(messageDiv);
-            document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+      document.getElementById("privateButton").addEventListener("click", () => {
+        if (!auth.currentUser) {
+          window.location.href = "login.html";
+          return;
         }
+        alert("Iniciando show privado...");
+      });
 
-        document.getElementById('sendMessage').addEventListener('click', () => {
-            const message = document.getElementById('messageInput').value.trim();
-            if (message) {
-                addMessage(message);
-                document.getElementById('messageInput').value = '';
-                
-                // Simula resposta após 1 segundo
-                setTimeout(() => {
-                    addMessage('Obrigada pela mensagem! Respondo em breve.', false);
-                }, 1000);
-            }
+      document.getElementById("followButton").addEventListener("click", () => {
+        if (!auth.currentUser) {
+          window.location.href = "login.html";
+          return;
+        }
+        alert("Seguindo modelo...");
+      });
+
+      document.getElementById("tipButton").addEventListener("click", () => {
+        if (!auth.currentUser) {
+          window.location.href = "login.html";
+          return;
+        }
+        alert("Enviando presente...");
+      });
+
+      document.getElementById("btnChat").addEventListener("click", () => {
+        document.getElementById("chatContainer").classList.add("active");
+      });
+
+      document.getElementById("chatClose").addEventListener("click", () => {
+        document.getElementById("chatContainer").classList.remove("active");
+      });
+
+      function addMessage(message, isSent = true) {
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `message message-${
+          isSent ? "sent" : "received"
+        }`;
+        messageDiv.textContent = message;
+        document.getElementById("chatMessages").appendChild(messageDiv);
+        document.getElementById("chatMessages").scrollTop =
+          document.getElementById("chatMessages").scrollHeight;
+      }
+
+      document.getElementById("sendMessage").addEventListener("click", () => {
+        const message = document.getElementById("messageInput").value.trim();
+        if (message) {
+          addMessage(message);
+          document.getElementById("messageInput").value = "";
+
+          // Simula resposta após 1 segundo
+          setTimeout(() => {
+            addMessage("Obrigada pela mensagem! Respondo em breve.", false);
+          }, 1000);
+        }
+      });
+
+      document
+        .getElementById("messageInput")
+        .addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            document.getElementById("sendMessage").click();
+          }
         });
 
-        document.getElementById('messageInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                document.getElementById('sendMessage').click();
-            }
-        });
-
-        // Carrega o perfil quando a página carregar
-        document.addEventListener('DOMContentLoaded', () => {
-            // Em produção, buscaríamos o ID da URL e faríamos uma chamada à API
-            loadProfile(mockProfile);
-        });
+      // Carrega o perfil quando a página carregar
+      document.addEventListener("DOMContentLoaded", () => {
+        // Em produção, buscaríamos o ID da URL e faríamos uma chamada à API
+        loadProfile(mockProfile);
+      });
     </script>
-</body>
+  </body>
 </html>
