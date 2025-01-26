@@ -22,6 +22,9 @@ body {
 }
 
 main {
+  max-width: var(--max-w-main-container);
+  width: 100%;
+  margin: 0 auto;
   padding: 0 2rem;
 }
 
@@ -145,4 +148,26 @@ textarea {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--glass-border);
+}
+
+@media (width < 1024px) {
+  html {
+    font-size: 87%;
+  }
+}
+
+@media (width < 600px) {
+  main {
+    padding: 0 1rem;
+  }
+}
+
+@media (width < 400px) {
+  html {
+    font-size: 75%;
+  }
+  
+  main {
+    padding: 0 0.5rem;
+  }
 }

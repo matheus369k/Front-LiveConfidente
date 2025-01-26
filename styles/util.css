@@ -68,20 +68,26 @@ body {
   box-shadow: 0 8px 20px rgba(0, 245, 233, 0.2);
 }
 
-.btn-arrow-left  {
-  background-color: transparent;
-  border: none;
+.btn-close {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--text-gray);
   cursor: pointer;
-  transition: all 0.3s ease;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
 }
 
-header:has(.btn-arrow-left) {
-  width: 100%;
+.btn-close:hover {
+  color: var(--text-color);
 }
 
-.btn-arrow-left:hover {
-  transform: scale(1.1);
+/* Responsivo */
+@media (max-width: 768px) {
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9375rem;
+  }
 }

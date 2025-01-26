@@ -11,7 +11,8 @@ main {
 }
 
 .login-container {
-  max-width: 400px;
+  position: relative;
+  max-width: var(--max-w-login-container);
   margin: auto;
   padding: 2rem;
   background: var(--card-bg);
@@ -49,4 +50,10 @@ main {
 
 .forgot-password a:hover {
   color: var(--primary-color);
+}
+
+@media (width < 600px) {
+  .login-container {
+    padding: 1rem;
+  }
 }

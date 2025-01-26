@@ -39,4 +39,9 @@
 
   /* Medidas */
   --border-radius: 8px;
+  --max-w-main-container: 1444px;
+  --max-w-login-container: 450px;
+  --max-w-register-container: 520px;
+  --max-w-register-client-container: 500px;
+  --max-w-register-model-container: 800px;
 }

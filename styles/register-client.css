@@ -11,7 +11,8 @@ main {
 }
 
 .register-container {
-  max-width: 400px;
+  position: relative;
+  max-width: var(--max-w-register-client-container);
   margin: auto;
   padding: 2rem;
   background: var(--card-bg);
@@ -51,4 +52,10 @@ main {
 .terms a {
   color: var(--primary-color);
   text-decoration: none;
+}
+
+@media (width < 600px) {
+  .register-container {
+    padding: 1rem;
+  }
 }

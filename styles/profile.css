@@ -11,16 +11,17 @@ body {
 }
 
 .profile-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   max-width: 1200px;
-  margin: auto 0;
-  padding: 2rem;
+  margin: auto;
 }
 
 .profile-header {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 2rem;
-  margin-bottom: 2rem;
 }
 
 .profile-photo {
@@ -29,6 +30,7 @@ body {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
+  padding-bottom: 1rem;
 }
 
 .profile-photo img {
@@ -159,14 +161,17 @@ body {
 }
 
 .pricing-table {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
 .price-item {
   display: flex;
   justify-content: space-between;
+  flex-grow: 1;
+  text-wrap-mode: nowrap;
+  gap: 1rem;
   padding: 1rem;
   border-radius: var(--border-radius);
   background: var(--gradient-primary);
@@ -212,7 +217,7 @@ body {
 }
 
 .review-user::after {
-  content: '-';
+  content: "-";
   display: inline-block;
   text-align: center;
   width: 2rem;
@@ -240,6 +245,7 @@ body {
 .stat-item {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -250,6 +256,7 @@ body {
 
 .stat-label {
   color: var(--text-gray);
+  text-align: center;
 }
 
 .next-show {
@@ -295,16 +302,51 @@ body {
   font-size: 0.875rem;
 }
 
-@media (max-width: 768px) {
+@media (width < 768px) {
   .profile-header {
     grid-template-columns: 1fr;
   }
 
   .profile-photo {
     height: 300px;
+    width: fit-content;
+    margin-right: auto;
+  }
+
+  .profile-photo img {
+    width: auto;
+    min-width: 150px;
+  }
+
+  .online-status {
+    top: 0.5rem;
+    right: 0.5rem;
   }
 
   .profile-actions {
     flex-direction: column;
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+  }
+
+  .pricing-table {
+    flex-direction: column;
+  }
+}
+
+@media (width < 600px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .profile-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+  }
+
+  .tab-button {
+    padding: 0.7rem;
+    text-align: center;
   }
 }

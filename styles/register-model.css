@@ -12,7 +12,8 @@ main {
 }
 
 .register-container {
-  max-width: 800px;
+  position: relative;
+  max-width: var(--max-w-register-model-container);
   margin: auto;
   padding: 2rem;
   background: var(--card-bg);
@@ -60,7 +61,7 @@ main {
   margin-bottom: 1rem;
 }
 
-.form-location  option{
+.form-location option {
   background: var(--card-bg);
 }
 
@@ -104,7 +105,7 @@ main {
   z-index: 100;
 }
 
-.checkbox-item input[type="checkbox"]  {
+.checkbox-item input[type="checkbox"] {
   all: unset;
   position: absolute;
   top: 0;
@@ -157,4 +158,10 @@ main {
   top: 50%;
   left: 0.75rem;
   transform: translateY(-50%);
+}
+
+@media (width < 600px) {
+  .register-container {
+    padding: 1rem;
+  }
 }

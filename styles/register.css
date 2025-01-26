@@ -12,7 +12,8 @@ main {
 
 /* Formulários */
 .auth-container {
-  max-width: 500px;
+  position: relative;
+  max-width: var(--max-w-register-container);
   width: 100%;
   margin: auto;
   padding: 2rem;
@@ -155,3 +156,10 @@ main {
   width: 20px;
   height: 20px;
 }
+
+@media (width < 600px) {
+  .auth-container {
+    padding: 1rem;
+  }
+}
+
