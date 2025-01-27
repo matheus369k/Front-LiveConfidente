@@ -37,7 +37,7 @@
   gap: 1.25rem;
 }
 
-.dropdown {
+.auth-dropdown {
   display: flex;
   gap: 1rem;
 }
@@ -157,18 +157,18 @@
     content: url(../assets/icons/close.svg);
   }
 
-  .dropdown {
+  .auth-dropdown {
     position: absolute;
     top: 100%;
     right: 0;
     flex-direction: column;
   }
 
-  .dropdown {
+  .auth-dropdown {
     display: none;
   }
 
-  .auth-buttons:hover .dropdown {
+  .auth-buttons:hover .auth-dropdown {
     background: var(--card-bg);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
