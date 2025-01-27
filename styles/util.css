@@ -21,7 +21,7 @@ body {
   justify-content: center;
   gap: 0.625rem;
   text-decoration: none;
-  min-width: 130px;
+  min-width: 8.125rem;
   position: relative;
   overflow: hidden;
 }

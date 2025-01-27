@@ -96,6 +96,7 @@ select.form-control:focus {
   background: var(--card-bg);
   border: 2px solid var(--glass-border);
   color: var(--text-gray);
+  text-align: center;
   font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -295,13 +296,6 @@ select.form-control:focus {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    gap: 0.5rem;
-    color: var(--text-gray);
-    background: var(--card-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--border-radius);
-    padding: 0.5rem 0.75rem;
-    gap: 0.5rem;
   }
 
   .filter-dropdown:hover {
@@ -309,8 +303,7 @@ select.form-control:focus {
   }
 
   .filter-dropdown span {
-    font-size: 1.2rem;
-    font-weight: semibold;
+    font-weight: bold;
   }
 
   .filter-badge {
