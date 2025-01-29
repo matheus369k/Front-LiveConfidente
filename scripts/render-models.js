@@ -1,5 +1,5 @@
 // Dados mockados para desenvolvimento
-const mockModels = [
+const mockProfileModels = [
   {
     id: 1,
     name: "Ana Silva",
@@ -143,7 +143,7 @@ function renderModelCards(models) {
 
 // Função para filtrar modelos
 function filterModels(query = "", city = "") {
-  let filtered = [...mockModels];
+  let filtered = [...mockProfileModels];
 
   if (query) {
     filtered = filtered.filter(
@@ -165,7 +165,7 @@ function filterModels(query = "", city = "") {
 // Event listeners
 document.addEventListener("DOMContentLoaded", () => {
   // Renderiza todos os modelos inicialmente
-  renderModelCards(mockModels);
+  renderModelCards(mockProfileModels);
 
   // Adiciona event listener para o campo de busca
   const searchInput = document.getElementById("searchInput");
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
       filterTags.forEach((t) => t.classList.remove("active"));
       tag.classList.add("active");
 
-      let filtered = [...mockModels];
+      let filtered = [...mockProfileModels];
       const filter = tag.textContent.toLowerCase();
 
       switch (filter) {
@@ -213,61 +213,4 @@ document.addEventListener("DOMContentLoaded", () => {
       renderModelCards(filtered);
     });
   });
-});
-
-// Chat
-function loadChat(profiles) {
-  document.querySelectorAll("[data-id]").forEach((btnChat) => {
-    btnChat.addEventListener("click", (event) => {
-      const profileId =
-        event.target.dataset.id || event.target.parentElement.dataset.id;
-
-      const chatProfile = profiles.find(
-        (profile) => profile.id === parseInt(profileId)
-      );
-
-      document.getElementById("profilePhotoChat").src = chatProfile.photo;
-      document.getElementById("profileNameChat").textContent = chatProfile.name;
-
-      document.getElementById("chatContainer").classList.add("active");
-    });
-  });
-
-  document.getElementById("chatClose").addEventListener("click", () => {
-    document.getElementById("chatContainer").classList.remove("active");
-  });
-}
-
-function addMessage(message, isSent = true) {
-  const messageDiv = document.createElement("div");
-  messageDiv.className = `message message-${isSent ? "sent" : "received"}`;
-  messageDiv.textContent = message;
-  document.getElementById("chatMessages").appendChild(messageDiv);
-  document.getElementById("chatMessages").scrollTop =
-    document.getElementById("chatMessages").scrollHeight;
-}
-
-document.getElementById("sendMessage").addEventListener("click", () => {
-  const message = document.getElementById("messageInput").value.trim();
-  if (message) {
-    addMessage(message);
-    document.getElementById("messageInput").value = "";
-
-    // Simula resposta após 1 segundo
-    setTimeout(() => {
-      addMessage("Obrigada pela mensagem! Respondo em breve.", false);
-    }, 1000);
-  }
-});
-
-document.getElementById("messageInput").addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    document.getElementById("sendMessage").click();
-  }
-});
-
-// Carrega o perfil quando a página carregar
-document.addEventListener("DOMContentLoaded", () => {
-  // Em produção, buscaríamos o ID da URL e faríamos uma chamada à API
-  loadChat(mockModels);
 });

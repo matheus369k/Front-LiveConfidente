@@ -36,18 +36,18 @@
               >
             </div>
           </div>-->
-          <div class="user-menu" id="userMenu">
+          <div class="user-menu">
             <div class="dropdown">
               <button class="btn btn-outline dropdown-toggle">
                 <span id="userName">Usuário</span>
               </button>
 
-              <div class="dropdown-menu" style="display: none">
+              <div class="dropdown-menu" id="userMenu" style="display: none">
                 <a href="profile.html" class="dropdown-item">Meu Perfil</a>
                 <a href="#" class="dropdown-item" id="logoutButton">Sair</a>
               </div>
 
-              <div class="dropdown-menu">
+              <div class="dropdown-menu" id="authButtons">
                 <a href="register.html" class="dropdown-item">
                   Cadastrar
                 </a>
@@ -204,6 +204,7 @@
     </div>
 
     <script src="scripts/auth.js"></script>
-    <script src="scripts/scripts.js"></script>
+    <script src="scripts/render-models.js"></script>
+    <script src="scripts/render-chat.js"></script>
   </body>
 </html>
