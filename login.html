@@ -94,21 +94,6 @@
     </main>
 
     <script src="scripts/auth.js"></script>
-    <script>
-      document
-        .getElementById("loginForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
-
-          try {
-            await auth.signIn(email, password);
-            window.location.href = "index.html";
-          } catch (error) {
-            alert(error.message);
-          }
-        });
-    </script>
+    <script src="scripts/login.js"></script>
   </body>
 </html>
